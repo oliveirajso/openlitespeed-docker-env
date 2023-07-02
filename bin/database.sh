@@ -2,6 +2,8 @@
 source .env
 
 DOMAIN=''
+SQL_HOST=''
+SQL_PORT=''
 SQL_DB=''
 SQL_USER=''
 SQL_PASS=''
@@ -57,6 +59,8 @@ trans_name(){
 
 display_credential(){
     if [ ${SET_OK} = 0 ]; then
+        echo "Host: ${SQL_HOST}"
+        echo "Port: ${SQL_PORT}"
         echo "Database: ${SQL_DB}"
         echo "Username: ${SQL_USER}"
         echo "Password: $(echo ${SQL_PASS} | tr -d "'")"
@@ -69,6 +73,8 @@ store_credential(){
             mv ./sites/${1}/.db_pass ./sites/${1}/.db_pass.bk
         fi
         cat > "./sites/${1}/.db_pass" << EOT
+"Host":"${SQL_HOST}"
+"Port":"${SQL_PORT}"
 "Database":"${SQL_DB}"
 "Username":"${SQL_USER}"
 "Password":"$(echo ${SQL_PASS} | tr -d "'")"
@@ -79,7 +85,8 @@ EOT
 }
 
 check_db_access(){
-    docker compose exec -T mysql su -c "mysql -uroot -p${MYSQL_ROOT_PASSWORD} -e 'status'" >/dev/null 2>&1
+    # docker compose exec -T mysql su -c "mysql -uroot -p${MYSQL_ROOT_PASSWORD} -e 'status'" >/dev/null 2>&1
+    mysql -uroot -p${MYSQL_ROOT_PASSWORD} -h${MYSQL_HOST} -P${MYSQL_PORT} -e 'status' >/dev/null 2>&1
     if [ ${?} != 0 ]; then
         echo '[X] DB access failed, please check!'
         exit 1

@@ -1,20 +1,20 @@
 version: '3'
 services:
-  mysql:
-    image: mariadb:10.5.9
-    logging:
-      driver: none
-    command: --max_allowed_packet=256M
-    volumes:
-      - "./data/db:/var/lib/mysql:delegated"
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    restart: always
-    networks:
-      - default
+  # mysql:
+  #   image: mariadb:10.5.9
+  #   logging:
+  #     driver: none
+  #   command: --max_allowed_packet=256M
+  #   volumes:
+  #     - "./data/db:/var/lib/mysql:delegated"
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+  #     MYSQL_DATABASE: ${MYSQL_DATABASE}
+  #     MYSQL_USER: ${MYSQL_USER}
+  #     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+  #   restart: always
+  #   networks:
+  #     - default
   litespeed:
     image: litespeedtech/openlitespeed:${OLS_VERSION}-${PHP_VERSION}
     logging:
@@ -44,7 +44,8 @@ services:
       - 8080:8080
       - 8443:8443
     environment:
-        DATABASE_HOST: mysql
+        # DATABASE_HOST: mysql
+        DATABASE_HOST: ${MYSQL_HOST}:${MYSQL_PORT}
     restart: always
     networks:
       - default

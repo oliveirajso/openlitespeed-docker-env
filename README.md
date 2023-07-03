@@ -169,6 +169,11 @@ bash bin/webadmin.sh [-M, --mod-secure] disable
 >Please ignore ModSecurity warnings from the server. They happen if some of the rules are not supported by the server.
 ### Accessing the Database
 After installation, you can use phpMyAdmin to access the database by visiting `http://127.0.0.1:8080` or `https://127.0.0.1:8443`. The default username is `root`, and the password is the same as the one you supplied in the `.env` file.
+### Accessing the Database with docker
+After installation, you can use phpMyAdmin to access the database by visiting `http://127.0.0.1:8080` or `https://127.0.0.1:8443`. The default username is `root`, and the password is the same as the one you supplied in the `.env` file.
+libere o usuário para usar o acesso do root
+ALTER USER 'root'@'localhost' IDENTIFIED VIA mysql_native_password USING PASSWORD('root');
+
 
 ## Customization
 If you want to customize the image by adding some packages, e.g. `lsphp80-pspell`, just extend it with a Dockerfile. 

@@ -111,6 +111,7 @@ db_setup(){
     SET_OK=${?}
 }
 
+
 auto_setup_main(){
     check_input ${DOMAIN}
     gen_pass

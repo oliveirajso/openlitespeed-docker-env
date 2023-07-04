@@ -104,7 +104,7 @@ check_db_exist(){
 
 db_setup(){  
     #docker compose exec -T mysql su -c 'mysql -uroot -p${MYSQL_ROOT_PASSWORD} \
-    mysql -uroot -p${MYSQL_ROOT_PASSWORD} \
+    mysql -uroot -p${MYSQL_ROOT_PASSWORD} -h${MYSQL_HOST} -P${MYSQL_PORT} \
     -e "CREATE DATABASE '${SQL_DB}';" \
     -e "GRANT ALL PRIVILEGES ON '${SQL_DB}'.* TO '${SQL_USER}'@'${ANY}' IDENTIFIED BY '${SQL_PASS}';" \
     -e "FLUSH PRIVILEGES;"

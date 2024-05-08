@@ -14,6 +14,18 @@ Install a lightweight WordPress container with OpenLiteSpeed Edge or Stable vers
 Edit the `.env` file to update the demo site domain, default MySQL user, and password.
 Feel free to check [Docker hub Tag page](https://hub.docker.com/repository/docker/litespeedtech/openlitespeed/tags) if you want to update default openlitespeed and php versions. 
 
+### Multiplas versões do PHP
+[Tutorial Video](https://www.youtube.com/watch?v=urnHwEQ2eAE&t=302s)
+
+instale php74 e php80 se necessário
+
+configure 2 aplicativos externos, um para 74 e um para 80, ambos no nível do servidor ou um para cada domínio
+
+uma vez que o aplicativo ext é criado, você pode configurar o manipulador de script para o aplicativo ext correspondente, como domínio A para php74 ext app e domínio B para php80 ext app
+
+https://youtu.be/urnHwEQ2eAE?t=302
+
+
 ## Installation
 Clone this repository or copy the files from this repository into a new folder:
 ```

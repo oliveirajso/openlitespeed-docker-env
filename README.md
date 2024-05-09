@@ -26,6 +26,9 @@ uma vez que o aplicativo ext é criado, você pode configurar o manipulador de s
 https://youtu.be/urnHwEQ2eAE?t=302
 
 
+https://github.com/litespeedtech/ols-docker-env/issues/32
+
+
 ## Installation
 Clone this repository or copy the files from this repository into a new folder:
 ```
